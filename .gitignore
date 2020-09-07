@@ -1,0 +1,14 @@
+# Backup files
+*.bak
+
+# Temps
+*.swp
+*.save
+*.old
+*.retry
+
+# Downloads
+deprecated
+
+packer-vars.sh
+
