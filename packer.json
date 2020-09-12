@@ -3,7 +3,8 @@
       "packer_profile": "{{env `PACKER_PROFILE`}}",
       "packer_region": "{{env `PACKER_REGION`}}",
       "packer_vpc_id": "{{env `PACKER_VPC_ID`}}",
-      "packer_subner_id": "{{env `PACKER_SUBNET_ID`}}"
+      "packer_subner_id": "{{env `PACKER_SUBNET_ID`}}",
+      "packer_build_start": "{{isotime `2006-01-02T15:04:05`}}"
     },
     "builders": [    {
       "type": "amazon-ebs",
@@ -27,15 +28,23 @@
       "ssh_timeout": "10m",
       "ssh_pty": true,
       "associate_public_ip_address": true,
-      "ami_name": "aws-ec2-reference-base-{{isotime \"2006-01-02-15-04-05\"}}",
-      "ami_description": "AWS EC2 Reference Base Image",
+      "ami_name": "aws-ec2-reference-system-{{user `packer_build_start` | clean_resource_name }}",
+      "ami_description": "AWS EC2 Reference System Image",
       "run_tags": {
-        "Name": "Packer: aws-ec2-reference-base",
+        "Name": "Packer: aws-ec2-reference-system",
         "Environment": "Dev",
-        "Workload": "CI\\CD"
+        "Workload": "CI\\CD",
+        "PackerBuildName": "{{build_name}}",
+        "PackerBuildType": "{{build_type}}",
+        "PackerVersion": "{{packer_version}}"
       },
       "tags": {
-        "Name": "Packer: aws-ec2-reference-base"
+        "Name": "aws-ec2-reference-system-{{user `packer_build_start` | clean_resource_name }}",
+        "Family": "aws-ec2-reference-system",
+        "Project": "aws-ec2-reference",
+        "PackerBuildName": "{{build_name}}",
+        "PackerBuildType": "{{build_type}}",
+        "PackerVersion": "{{packer_version}}"
       }
     }],
     "provisioners": [

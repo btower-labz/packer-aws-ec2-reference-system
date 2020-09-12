@@ -8,7 +8,7 @@ set -o pipefail
 BASENAME=$(basename "${0}")
 
 function log {
-  local MESSAGE=$${1}
+  local MESSAGE=${1}
   echo "${BASENAME}: ${MESSAGE}"
   logger --id "${BASENAME}: ${MESSAGE}"
 }
