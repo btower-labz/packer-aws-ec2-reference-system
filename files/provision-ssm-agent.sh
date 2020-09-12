@@ -20,8 +20,7 @@ yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/li
 
 log 'Installation finished ...'
 
+systemctl stop amazon-ssm-agent
 systemctl disable amazon-ssm-agent
-#systemctl start amazon-ssm-agent
-#systemctl status amazon-ssm-agent
 
 log 'Finished ...'

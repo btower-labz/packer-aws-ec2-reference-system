@@ -5,6 +5,8 @@ set -o noclobber
 set -o errexit
 set -o pipefail
 
+# TODO: disable service after provision is done
+
 BASENAME=$(basename "${0}")
 function log {
   local MESSAGE=${1}
