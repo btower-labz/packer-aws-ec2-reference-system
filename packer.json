@@ -15,7 +15,8 @@
       "source_ami_filter": {
         "filters": {
           "name": "amzn2-ami-hvm-2.0.*-x86_64-gp2",
-          "virtualization-type": "hvm"
+          "virtualization-type": "hvm",
+          "state": "available"
         },
         "owners": ["amazon"],
         "most_recent": true

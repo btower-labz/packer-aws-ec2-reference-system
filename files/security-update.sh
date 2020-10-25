@@ -15,9 +15,9 @@ function log {
 
 log 'Started ...'
 
-yum --assumeyes updateinfo
+yum --assumeyes updateinfo || true
 uname -mrs
-yum --assumeyes check-update
-yum --assumeyes update
+yum --assumeyes check-update || true
+yum --assumeyes update || true
 
 log 'Finished ...'
